@@ -1,0 +1,22 @@
+{
+  "name": "node-mysql-counter-app",
+  "version": "1.0.14",
+  "private": true,
+  "description": "Simple Node.js app with Postgres",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.18.2",
+    "ng": "^0.0.0",
+    "pg": "^8.11.3",
+    "retry": "^0.13.1"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "prepare": "husky install"
+  },
+  "author": "Kirill M",
+  "license": "MIT",
+  "devDependencies": {
+    "husky": "^8.0.0"
+  }
+}
