@@ -11,7 +11,7 @@ app.use(express.json());
 // Database connection setup
 const pool = new Pool({
   user: process.env.DB_USER || 'postgres',
-  host: process.env.DB_HOST || 'postgres',
+  host: process.env.DB_HOST || '192.168.202.14',
   database: process.env.DB_DATABASE || 'postgres',
   password: process.env.DB_PASSWORD || 'mysecretpassword',
   port: process.env.DB_PORT || 5432,
