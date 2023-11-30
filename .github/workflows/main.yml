@@ -1,12 +1,5 @@
 name: Docker Build and Publish
 
-on:
-<<<<<<< HEAD
-#   workflow_dispatch:
-  push:
-    branches:
-      - master
-
 jobs:
   build_and_publish:
     runs-on: ubuntu-latest
