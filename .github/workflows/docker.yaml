@@ -50,8 +50,8 @@ jobs:
       
     - name: Commit and push changes to values.yaml
       run: |
-        # git config --local user.email "mazurovsasha@gmail.com"
-        # git config --local user.name "Alexsandr Mazurov"
+        git config --global user.email "mazurovsasha@gmail.com"
+        git config --global user.name "Alexsandr Mazurov"
         git add --all
         git commit -m "Update values.yaml v${{ steps.get_version.outputs.version }}"
         export GH_TOKEN=${{ secrets.PROJECT_TOKEN }}
