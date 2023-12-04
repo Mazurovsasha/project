@@ -41,6 +41,7 @@ jobs:
       with:
         repository: Mazurovsasha/project-helm
         path: ./temp
+        token: ${{ secrets.PROJECT_TOKEN }}
 
     - name: Update values.yaml
       run: |
