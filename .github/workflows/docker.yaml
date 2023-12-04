@@ -53,8 +53,8 @@ jobs:
         git config --local user.email "mazurovsasha@gmail.com"
         git config --local user.name "Alexsandr Mazurov"
         git status
-        git add --all
-        git status
-        git commit -m "Update values.yaml v${{ steps.get_version.outputs.version }}"
-        git push -u origin master
+        # git add ./temp
+        # git status
+        # git commit -m "Update values.yaml v${{ steps.get_version.outputs.version }}"
+        # git push -u origin master
       
