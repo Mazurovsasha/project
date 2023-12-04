@@ -59,14 +59,14 @@ jobs:
     #     export GH_TOKEN=${{ secrets.PROJECT_TOKEN }}
     #     git push --force --set-upstream helm-origin master "${GH_TOKEN}"
 
-  - name: Commit and push changes to values.yaml
-    run: |
-      git config --global user.email "mazurovsasha@gmail.com"
-      git config --global user.name "Alexsandr Mazurov"
-      git branch -m master
-      git rm --cached temp
-      git add .
-      git commit -m "Update values.yaml v${{ steps.get_version.outputs.version }}"
-      git remote add helm-origin https://github.com/Mazurovsasha/project-helm.git
-      export GH_TOKEN=${{ secrets.PROJECT_TOKEN }}
-      git push --force --set-upstream helm-origin master "${GH_TOKEN}"
+    - name: Commit and push changes to values.yaml
+      run: |
+        git config --global user.email "mazurovsasha@gmail.com"
+        git config --global user.name "Alexsandr Mazurov"
+        git branch -m master
+        git rm --cached temp
+        git add .
+        git commit -m "Update values.yaml v${{ steps.get_version.outputs.version }}"
+        git remote add helm-origin https://github.com/Mazurovsasha/project-helm.git
+        export GH_TOKEN=${{ secrets.PROJECT_TOKEN }}
+        git push --force --set-upstream helm-origin master "${GH_TOKEN}"
