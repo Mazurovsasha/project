@@ -58,46 +58,8 @@ jobs:
         # git push -u origin master
 
     - name: Push changes
-      uses: appleboy/git-push-action@v0.0.3
+      uses: ad-m/github-push-action@master
       with:
-        # git author name
-        author_name: "Alexsandr Mazurov"
-        # git author email
-        author_email: "mazurovsasha@gmail.com"
-        # # netrc machine
-        # netrc_machine: # optional
-        # netrc username
-        netrc_username: ${{ secrets.NAME }}
-        # netrc password
-        netrc_password: ${{ secrets.PASS }}
-        # # private ssh key
-        # ssh_key: # optional
-        # # url of the remote repo
-        remote: https://github.com/Mazurovsasha/project-helm.git
-        # # name of the remote repo
-        # remote_name: # optional, default is deploy
-        # name of remote branch
-        branch: master
-        # # name of local branch
-        # local_branch: # optional, default is HEAD
-        # path to git repo
-        path: ./temp
-        # # force push to remote
-        # force: # optional
-        # push to remote with tags
-        # followtags: # optional
-        # # skip ssl verification
-        # skip_verify: # optional
-        # # commit dirty changes
-        # commit: # optional
-        # commit message
-        commit_message: "Update values.yaml v${{ steps.get_version.outputs.version }}"
-        # # tag to add to the commit
-        # tag: # optional
-        # # allow empty commit
-        # empty_commit: # optional
-        # # bypasses the pre-commit and commit-msg hooks
-        # no_verify: # optional
-        # # rebase local branch on top of remote branch
-        # rebase: # optional
+        github_token: ${{ secrets.PROJECT_TOKEN }}
+        branch: "master"
       
