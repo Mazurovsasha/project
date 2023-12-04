@@ -35,3 +35,21 @@ jobs:
         context: .
         push: true
         tags: mazurovsasha/project:${{ steps.get_version.outputs.version }}
+
+    - name: Checkout values.yaml
+      uses: actions/checkout@v2
+      with:
+        repository: Mazurovsasha/project-helm
+        path: ./project/values.yaml
+
+    - name: Update values.yaml
+      run: |
+        sed -i 's/tag:.*/tag: ${{ steps.get_version.outputs.version }}/g' ./project/values.yaml
+      
+    - name: Commit and push changes to values.yaml
+      run: |
+        git config --local user.email "mazurovsasha@gmail.com"
+        git config --local user.name "Alexsandr Mazurov"
+        git add ./project/values.yaml
+        git commit -m "Update values.yaml v${{ steps.get_version.outputs.version }}"
+        git push
