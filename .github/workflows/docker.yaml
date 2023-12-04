@@ -52,8 +52,7 @@ jobs:
       run: |
         git config --local user.email "mazurovsasha@gmail.com"
         git config --local user.name "Alexsandr Mazurov"
-        echo 'git status'
-        # git add ./temp
+        git add --all
         # git status
         # git commit -m "Update values.yaml v${{ steps.get_version.outputs.version }}"
         # git push -u origin master
