@@ -40,17 +40,17 @@ jobs:
       uses: actions/checkout@v2
       with:
         repository: Mazurovsasha/project-helm
-        path: ./project/values.yaml
+        path: ./temp
 
     - name: Update values.yaml
       run: |
-        cat ./project/values.yaml
-        sed -i 's/tag:.*/tag: ${{ steps.get_version.outputs.version }}/g' ./project/values.yaml
+        cat ./temp/project/values.yaml
+        sed -i 's/tag:.*/tag: ${{ steps.get_version.outputs.version }}/g' ./temp/project/values.yaml
       
     - name: Commit and push changes to values.yaml
       run: |
         git config --local user.email "mazurovsasha@gmail.com"
         git config --local user.name "Alexsandr Mazurov"
-        git add ./project/values.yaml
+        git add ./temp/project/values.yaml
         git commit -m "Update values.yaml v${{ steps.get_version.outputs.version }}"
         git push
