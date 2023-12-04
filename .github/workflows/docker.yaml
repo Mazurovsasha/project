@@ -52,7 +52,8 @@ jobs:
       run: |
         git config --local user.email "mazurovsasha@gmail.com"
         git config --local user.name "Alexsandr Mazurov"
-        git remote add origin git@github.com:Mazurovsasha/project-helm.git
         git add --all
         git commit -m "Update values.yaml v${{ steps.get_version.outputs.version }}"
-        git push
+        git push -u origin master
+      with:
+        token: ${{ secrets.PROJECT_TOKEN }}
