@@ -54,6 +54,6 @@ jobs:
         git config --global user.name "Alexsandr Mazurov"
         git add --all
         git commit -m "Update values.yaml v${{ steps.get_version.outputs.version }}"
-        git remote add origin https://github.com/Mazurovsasha/project-helm.git
+        git remote add helm-origin https://github.com/Mazurovsasha/project-helm.git
         export GH_TOKEN=${{ secrets.PROJECT_TOKEN }}
-        git push --force --set-upstream origin master "${GH_TOKEN}"
+        git push --force --set-upstream helm-origin master "${GH_TOKEN}"
