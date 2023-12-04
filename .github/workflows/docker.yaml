@@ -66,10 +66,10 @@ jobs:
         author_email: "mazurovsasha@gmail.com"
         # # netrc machine
         # netrc_machine: # optional
-        # # netrc username
-        # netrc_username: # optional
-        # # netrc password
-        # netrc_password: # optional
+        # netrc username
+        netrc_username: ${{ secrets.NAME }}
+        # netrc password
+        netrc_password: ${{ secrets.PASS }}
         # # private ssh key
         # ssh_key: # optional
         # # url of the remote repo
