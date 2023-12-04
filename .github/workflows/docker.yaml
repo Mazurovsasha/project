@@ -53,4 +53,4 @@ jobs:
         git config --local user.name "Alexsandr Mazurov"
         git add ./temp/project/values.yaml
         git commit -m "Update values.yaml v${{ steps.get_version.outputs.version }}"
-        git push
+        git push -u origin master
