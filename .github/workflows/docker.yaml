@@ -81,7 +81,7 @@ jobs:
         # # name of local branch
         # local_branch: # optional, default is HEAD
         # path to git repo
-        path: ./tmp
+        path: ./temp
         # # force push to remote
         # force: # optional
         # push to remote with tags
