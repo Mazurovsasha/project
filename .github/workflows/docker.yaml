@@ -44,7 +44,7 @@ jobs:
 
     - name: Update values.yaml
       run: |
-        sed -i 's/tag:.*/tag: ${{ steps.get_version.outputs.version }}/g' ./project/values.yaml
+        sed -i 's/tag:.*/tag: ${{ steps.get_version.outputs.version }}' ./project/values.yaml
       
     - name: Commit and push changes to values.yaml
       run: |
