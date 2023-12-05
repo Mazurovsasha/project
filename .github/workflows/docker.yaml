@@ -65,7 +65,7 @@ jobs:
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.PROJECT_TOKEN }}
-        repository: Mazurovsasha/project-helm.git
+        repository: Mazurovsasha/project-helm
         branch: master
     # - name: Git Commit Push Action
     #   uses: GuillaumeFalourd/git-commit-push@v1.3
