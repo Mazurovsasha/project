@@ -56,8 +56,9 @@ jobs:
         git add .
         git commit -m "Update values.yaml v${{ steps.get_version.outputs.version }}"
         git remote add helm-origin https://github.com/Mazurovsasha/project-helm.git
+        git remote set-url helm-origin https://x-access-token:${{ secrets.PROJECT_TOKEN }}@github.com/Mazurovsasha/project-helm.git
         # git push --force --set-upstream helm-origin master "${GH_TOKEN}"
-        git push https://${{ secrets.PROJECT_TOKEN }}:@github.com/Mazurovsasha/project-helm.git master
+        git push 
 
     # - name: Git Commit Push Action
     #   uses: GuillaumeFalourd/git-commit-push@v1.3
