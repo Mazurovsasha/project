@@ -46,7 +46,7 @@ jobs:
       run: |
         sed -i 's/tag:.*/tag: ${{ steps.get_version.outputs.version }}/g' ./project/values.yaml
 
-    - name: Commit and push for changes to values.yaml
+    - name: Commit and push changes to values.yaml
       run: |
         # export GH_TOKEN=${{ secrets.PROJECT_TOKEN }}
         cd /home/runner/work/project/project/project/
@@ -57,7 +57,7 @@ jobs:
         git commit -m "Update values.yaml v${{ steps.get_version.outputs.version }}"
         git remote add helm-origin https://github.com/Mazurovsasha/project-helm.git
         # git push --force --set-upstream helm-origin master "${GH_TOKEN}"
-        git push https://${{ secrets.NAME }}:${{ secrets.PASS }}:@github.com/Mazurovsasha/project-helm.git master
+        git push https://${{ secrets.PROJECT_TOKEN }}:@github.com/Mazurovsasha/project-helm.git master
 
     # - name: Git Commit Push Action
     #   uses: GuillaumeFalourd/git-commit-push@v1.3
