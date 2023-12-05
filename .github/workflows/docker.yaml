@@ -61,6 +61,7 @@ jobs:
 
     - name: Commit and push changes to values.yaml
       run: |
+        git init
         git config --global user.email "mazurovsasha@gmail.com"
         git config --global user.name "Alexsandr Mazurov"
         git branch -m master
