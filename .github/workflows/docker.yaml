@@ -58,7 +58,7 @@ jobs:
         git commit -m "Update values.yaml v${{ steps.get_version.outputs.version }}"
         git remote rm origin
         git remote add origin https://github.com/Mazurovsasha/project-helm.git
-        git remote set-url helm-origin https://x-access-token:${{ secrets.PROJECT_TOKEN }}@github.com/Mazurovsasha/project-helm.git
+        git remote set-url origin https://x-access-token:${{ secrets.PROJECT_TOKEN }}@github.com/Mazurovsasha/project-helm.git
         # git push --force --set-upstream helm-origin master "${GH_TOKEN}"
         git push 
 
