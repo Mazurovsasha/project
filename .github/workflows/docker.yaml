@@ -50,8 +50,8 @@ jobs:
       run: |
         # export GH_TOKEN=${{ secrets.PROJECT_TOKEN }}
         cd /home/runner/work/project/project/project/
-        # git config --global user.email "mazurovsasha@gmail.com"
-        # git config --global user.name "Alexsandr Mazurov"
+        git config --global user.email "mazurovsasha@gmail.com"
+        git config --global user.name "Alexsandr Mazurov"
         # git branch -m master
         git add .
         git commit -m "Update values.yaml v${{ steps.get_version.outputs.version }}"
