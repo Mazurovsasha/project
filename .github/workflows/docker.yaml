@@ -40,13 +40,13 @@ jobs:
       uses: actions/checkout@v2
       with:
         repository: Mazurovsasha/project-helm
-        path: ./
+        path: ./temp
         token: ${{ secrets.PROJECT_TOKEN }}
 
     - name: Update values.yaml
       run: |
-        sed -i 's/tag:.*/tag: ${{ steps.get_version.outputs.version }}/g' ./project/values.yaml
-        cat ./project/values.yaml
+        sed -i 's/tag:.*/tag: ${{ steps.get_version.outputs.version }}/g' ./temp/project/values.yaml
+        
       
     # - name: Commit and push changes to values.yaml
     #   run: |
@@ -61,6 +61,7 @@ jobs:
 
     - name: Commit and push changes to values.yaml
       run: |
+        cd ./temp
         git init
         git config --global user.email "mazurovsasha@gmail.com"
         git config --global user.name "Alexsandr Mazurov"
