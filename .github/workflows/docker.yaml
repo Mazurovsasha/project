@@ -61,8 +61,7 @@ jobs:
 
     - name: Commit and push changes to values.yaml
       run: |
-        ls -la /home/runner/work/project/project/project/
-        cat /home/runner/work/project/project/project/values.yaml
+        cd /home/runner/work/project/project/project/
         git config --global user.email "mazurovsasha@gmail.com"
         git config --global user.name "Alexsandr Mazurov"
         git branch -m master
