@@ -25,7 +25,7 @@ module.exports = (pool) => {
         const toggleButton = `<button onclick="toggleTable()">Toggle Table</button>`;
         const form = `
           <form action="/add-user" method="POST">
-            <label for="firstName">First Nameee:</label>
+            <label for="firstName">First Name:</label>
             <input type="text" id="firstName" name="firstName"><br><br>
             <label for="lastName">Last Name:</label>
             <input type="text" id="lastName" name="lastName"><br><br>

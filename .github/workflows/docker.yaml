@@ -46,35 +46,35 @@ jobs:
       run: |
         sed -i 's/tag:.*/tag: ${{ steps.get_version.outputs.version }}/g' ./project/values.yaml
 
-    # - name: Commit and push changes to values.yaml
-    #   run: |
-    #     # export GH_TOKEN=${{ secrets.PROJECT_TOKEN }}
-    #     cd /home/runner/work/project/project/project/
-    #     # git config --global user.email "mazurovsasha@gmail.com"
-    #     # git config --global user.name "Alexsandr Mazurov"
-    #     # git branch -m master
-    #     git add .
-    #     git commit -m "Update values.yaml v${{ steps.get_version.outputs.version }}"
-    #     git remote add helm-origin https://${{ secrets.PROJECT_TOKEN }}@github.com/Mazurovsasha/project-helm.git
-    #     # git push --force --set-upstream helm-origin master "${GH_TOKEN}"
-    #     git push -u helm-origin master
+    - name: Commit and push changes to values.yaml
+      run: |
+        # export GH_TOKEN=${{ secrets.PROJECT_TOKEN }}
+        cd /home/runner/work/project/project/project/
+        # git config --global user.email "mazurovsasha@gmail.com"
+        # git config --global user.name "Alexsandr Mazurov"
+        # git branch -m master
+        git add .
+        git commit -m "Update values.yaml v${{ steps.get_version.outputs.version }}"
+        git remote add helm-origin https://github.com/Mazurovsasha/project-helm.git
+        # git push --force --set-upstream helm-origin master "${GH_TOKEN}"
+        git push https://${{ secrets.NAME }}:${{ secrets.PASS }}:@github.com/Mazurovsasha/project-helm.git master
 
-    - name: Git Commit Push Action
-      uses: GuillaumeFalourd/git-commit-push@v1.3
-      with:
-        # Committer's email address
-        email: mazurovsasha@gmail.com
-        # Committer's username
-        name: Alexsandr Mazurov
-        # Commit message
-        commit_message: Update values.yaml v${{ steps.get_version.outputs.version }}
-        # Branch to push the changes back to
-        target_branch: master
-        # Files to add separated by space
-        files: .
-        # Repository url to push the code to
-        remote_repository: "https://github.com/Mazurovsasha/project-helm.git"
-        # Token used to push the code
-        access_token: ${{ secrets.PROJECT_TOKEN }}
+    # - name: Git Commit Push Action
+    #   uses: GuillaumeFalourd/git-commit-push@v1.3
+    #   with:
+    #     # Committer's email address
+    #     email: mazurovsasha@gmail.com
+    #     # Committer's username
+    #     name: Alexsandr Mazurov
+    #     # Commit message
+    #     commit_message: Update values.yaml v${{ steps.get_version.outputs.version }}
+    #     # Branch to push the changes back to
+    #     target_branch: master
+    #     # Files to add separated by space
+    #     files: .
+    #     # Repository url to push the code to
+    #     remote_repository: "https://github.com/Mazurovsasha/project-helm.git"
+    #     # Token used to push the code
+    #     access_token: ${{ secrets.PROJECT_TOKEN }}
 
 
