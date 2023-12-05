@@ -68,6 +68,6 @@ jobs:
         git branch -m master
         git add .
         git commit -m "Update values.yaml v${{ steps.get_version.outputs.version }}"
-        git remote add helm-origin https://"${GH_TOKEN}"github.com/Mazurovsasha/project-helm.git
+        git remote add helm-origin https://"${GH_TOKEN}"/github.com/Mazurovsasha/project-helm.git
         # git push --force --set-upstream helm-origin master "${GH_TOKEN}"
         git push -u helm-origin master
