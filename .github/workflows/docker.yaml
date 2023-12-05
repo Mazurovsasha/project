@@ -59,7 +59,16 @@ jobs:
         git remote add helm-origin https://github.com/Mazurovsasha/project-helm.git
         git remote set-url helm-origin https://x-access-token:${{ secrets.PROJECT_TOKEN }}@github.com/Mazurovsasha/project-helm.git
         # git push --force --set-upstream helm-origin master "${GH_TOKEN}"
-        git push 
+        # git push 
+
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.PROJECT_TOKEN }}
+        branch: master
+    - uses: fastify/github-action-merge-dependabot@v2.1.1
+      with:
+        github-token: ${{ secrets.PROJECT_TOKEN }}
 
     # - name: Git Commit Push Action
     #   uses: GuillaumeFalourd/git-commit-push@v1.3
