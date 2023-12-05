@@ -46,12 +46,13 @@ jobs:
       run: |
         sed -i 's/tag:.*/tag: ${{ steps.get_version.outputs.version }}/g' ./project/values.yaml
 
-    - name: Commit and pushh changes to values.yaml
+    - name: Commit and push changes to values.yaml
       run: |
         # export GH_TOKEN=${{ secrets.PROJECT_TOKEN }}
         cd /home/runner/work/project/project/project/
         git config --global user.email "mazurovsasha@gmail.com"
         git config --global user.name "Alexsandr Mazurov"
+        git config credential.username "Mazurovsasha"
         # git branch -m master
         git add .
         git commit -m "Update values.yaml v${{ steps.get_version.outputs.version }}"
