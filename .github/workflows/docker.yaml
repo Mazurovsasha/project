@@ -52,7 +52,7 @@ jobs:
         cd /home/runner/work/project/project/project/
         git config --global user.email "mazurovsasha@gmail.com"
         git config --global user.name "github-actions[bot]"
-        git config credential.username "Mazurovsasha"
+        git config credential.username "github-actions[bot]"
         # git branch -m master
         git add .
         git commit -m "Update values.yaml v${{ steps.get_version.outputs.version }}"
