@@ -51,7 +51,7 @@ jobs:
         # export GH_TOKEN=${{ secrets.PROJECT_TOKEN }}
         cd /home/runner/work/project/project/project/
         git config --global user.email "mazurovsasha@gmail.com"
-        git config --global user.name "github-actions"
+        git config --global user.name "github-actions[bot]"
         git config credential.username "Mazurovsasha"
         # git branch -m master
         git add .
