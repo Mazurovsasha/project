@@ -73,7 +73,7 @@ jobs:
         # Files to add separated by space
         files: .
         # Repository url to push the code to
-        remote_repository: https://github.com/Mazurovsasha/project-helm.git
+        remote_repository: "https://github.com/Mazurovsasha/project-helm.git"
         # Token used to push the code
         access_token: ${{ secrets.PROJECT_TOKEN }}
 
