@@ -51,7 +51,7 @@ jobs:
 
     - name: Commit and push changes to values.yaml
       run: |
-        cd /home/runner/work/project/project/project/
+        # cd /home/runner/work/project/project/project/
         git config --global user.email "mazurovsasha@gmail.com"
         git config --global user.name "{{ secrets.NAME }}"
         git config credential.username "{{ secrets.NAME }}"
