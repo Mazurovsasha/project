@@ -1,0 +1,43 @@
+name: Docker Build and Publish
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build_and_publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+
+
+    steps:
+    - name: Checkout values.yaml
+      uses: actions/checkout@v2
+      with:
+        repository: Mazurovsasha/project-helm
+        path: .
+
+    - name: Update values.yaml
+      run: |
+        data > test.txt
+
+    - name: Commit and push changes to values.yaml
+      run: |
+        # export GH_TOKEN=${{ secrets.PROJECT_TOKEN }}
+        cd /home/runner/work/project/project/project/
+        git config --global user.email "mazurovsasha@gmail.com"
+        git config --global user.name "Mazurovsasha"
+        git config credential.username "Mazurovsasha"
+        # git branch -m master
+        git add .
+        git commit -m "Update values.yaml v${{ steps.get_version.outputs.version }}"
+        git remote rm origin
+        git remote add origin https://github.com/Mazurovsasha/project-helm.git
+        git remote set-url origin https://x-access-token:${{ secrets.PROJECT_TOKEN }}@github.com/Mazurovsasha/project-helm.git
+        # git push --force --set-upstream helm-origin master "${GH_TOKEN}"
+        git config -l
+        git push --set-upstream origin master 
+
+
+
