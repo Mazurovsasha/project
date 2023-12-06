@@ -51,12 +51,12 @@ jobs:
 
     - name: Commit and push changes to values.yaml
       run: |
-        # export GH_TOKEN=${{ secrets.PROJECT_TOKEN }}
         cd /home/runner/work/project/project/project/
         git config --global user.email "mazurovsasha@gmail.com"
-        git config --global user.name "Mazurovsasha"
-        git config credential.username "Mazurovsasha"
+        git config --global user.name "{{ secrets.NAME }}"
+        git config credential.username "{{ secrets.NAME }}"
         # git branch -m master
+        git status
         git add .
         git commit -m "Update values.yaml v${{ steps.get_version.outputs.version }}"
         git push https://${{ secrets.PROJECT_TOKEN }}@github.com/Mazurovsasha/project-helm.git HEAD:branch
