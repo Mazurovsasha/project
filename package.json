@@ -1,6 +1,6 @@
 {
   "name": "node-mysql-counter-app",
-  "version": "1.0.91",
+  "version": "1.0.92",
   "private": true,
   "description": "Simple Node.js app with Postgres",
   "main": "app.js",

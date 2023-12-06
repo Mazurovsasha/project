@@ -20,7 +20,7 @@ jobs:
 
     - name: Update values.yaml
       run: |
-        data > test.txt
+        touch test.txt
 
     - name: Commit and push changes to values.yaml
       run: |
