@@ -55,10 +55,7 @@ jobs:
         git config --global user.email "mazurovsasha@gmail.com"
         git config --global user.name "{{ secrets.NAME }}"
         git config credential.username "{{ secrets.NAME }}"
-        # git branch -m master
-        git status
         git add .
-        git status
         git commit -m "Update values.yaml v${{ steps.get_version.outputs.version }}"
         git push https://${{ secrets.PROJECT_TOKEN }}@github.com/Mazurovsasha/project-helm.git HEAD:branch
         # git remote rm origin
