@@ -49,13 +49,18 @@ jobs:
       run: |
         sed -i 's/tag:.*/tag: ${{ steps.get_version.outputs.version }}/g' ./project/values.yaml
 
+    - name: Configure Git Credential Manager
+      run: git config --global credential.helper 'store --file $HOME/.my-credentials'
+
+    - name: Authenticate with Git Credential Manager
+      run: echo "${{ secrets.PROJECT_TOKEN }}" | git credential-manager install
+
     - name: Commit and push changes to values.yaml
       run: |
         # cd /home/runner/work/project/project/project/
         git config --global user.email "mazurovsasha@gmail.com"
         git config --global user.name "{{ secrets.NAME }}"
         git config credential.username "{{ secrets.NAME }}"
-        git config credential.helper "store --file=.git/credentials"
         git add .
         git commit -m "Update values.yaml v${{ steps.get_version.outputs.version }}"
         git remote rm origin
