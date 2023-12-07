@@ -47,7 +47,7 @@ jobs:
 
     - name: Update values.yaml
       run: |
-        sed -i 's/tag:.*/tag: ${{ steps.get_version.outputs.version }}/g' ./project/values.yaml
+        sed -i 's/tag:.*/tag: "${{ steps.get_version.outputs.version }}"/g' ./project/values.yaml
 
     - name: Set up SSH keys
       run: |
@@ -57,16 +57,6 @@ jobs:
         cat ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan github.com >> ~/.ssh/known_hosts
-
-    # - name: Configure Git Credential Manager
-    #   run: |
-    #     wget https://github.com/git-ecosystem/git-credential-manager/releases/download/v2.4.1/gcm-linux_amd64.2.4.1.deb
-    #     sudo dpkg -i ./gcm-linux_amd64.2.4.1.deb
-    #     git config --global credential.helper 'store --file $HOME/.my-credentials'
-                  # cd /home/runner/work/project/project/project/
-
-    # - name: Authenticate with Git Credential Manager
-    #   run: echo "${{ secrets.PROJECT_TOKEN }}" | git credential-manager install
 
     - name: Commit and push changes to values.yaml
       run: |
