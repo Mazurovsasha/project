@@ -49,18 +49,19 @@ jobs:
       run: |
         sed -i 's/tag:.*/tag: ${{ steps.get_version.outputs.version }}/g' ./project/values.yaml
 
-    - name: Configure Git Credential Manager
-      run: |
-        wget https://github.com/git-ecosystem/git-credential-manager/releases/download/v2.4.1/gcm-linux_amd64.2.4.1.deb
-        sudo dpkg -i ./gcm-linux_amd64.2.4.1.deb
-        git config --global credential.helper 'store --file $HOME/.my-credentials'
+    # - name: Configure Git Credential Manager
+    #   run: |
+    #     wget https://github.com/git-ecosystem/git-credential-manager/releases/download/v2.4.1/gcm-linux_amd64.2.4.1.deb
+    #     sudo dpkg -i ./gcm-linux_amd64.2.4.1.deb
+    #     git config --global credential.helper 'store --file $HOME/.my-credentials'
 
-    - name: Authenticate with Git Credential Manager
-      run: echo "${{ secrets.PROJECT_TOKEN }}" | git credential-manager install
+    # - name: Authenticate with Git Credential Manager
+    #   run: echo "${{ secrets.PROJECT_TOKEN }}" | git credential-manager install
 
     - name: Commit and push changes to values.yaml
       run: |
         # cd /home/runner/work/project/project/project/
+        echo $HOME/.ssh
         git config --global user.email "mazurovsasha@gmail.com"
         git config --global user.name "{{ secrets.NAME }}"
         git config credential.username "{{ secrets.NAME }}"
@@ -69,29 +70,3 @@ jobs:
         git remote rm origin
         git remote add origin https://"Mazurovsasha":"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"@github.com/Mazurovsasha/project-helm.git
         git push -u origin master
-        # git remote rm origin
-        # git remote add origin https://github.com/Mazurovsasha/project-helm.git
-        # git remote set-url origin https://x-access-token:${{ secrets.PROJECT_TOKEN }}@github.com/Mazurovsasha/project-helm.git
-        # git push --force --set-upstream helm-origin master "${GH_TOKEN}"
-        # git push --set-upstream origin master 
-
-
-    # - name: Git Commit Push Action
-    #   uses: GuillaumeFalourd/git-commit-push@v1.3
-    #   with:
-    #     # Committer's email address
-    #     email: mazurovsasha@gmail.com
-    #     # Committer's username
-    #     name: Alexsandr Mazurov
-    #     # Commit message
-    #     commit_message: Update values.yaml v${{ steps.get_version.outputs.version }}
-    #     # Branch to push the changes back to
-    #     target_branch: master
-    #     # Files to add separated by space
-    #     files: .
-    #     # Repository url to push the code to
-    #     remote_repository: "https://github.com/Mazurovsasha/project-helm.git"
-    #     # Token used to push the code
-    #     access_token: ${{ secrets.PROJECT_TOKEN }}
-
-
