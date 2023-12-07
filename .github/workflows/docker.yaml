@@ -47,7 +47,7 @@ jobs:
 
     - name: Update values.yaml
       run: |
-        sed -i 's/tag:.*/tag: "${{ steps.get_version.outputs.version }}"/g' ./project/values.yaml
+        sed -i 's/taggg:.*/taggg: "${{ steps.get_version.outputs.version }}"/g' ./project/values.yaml
 
     - name: Set up SSH keys
       run: |
@@ -61,8 +61,8 @@ jobs:
     - name: Commit and push changes to values.yaml
       run: |
         git config --global user.email "mazurovsasha@gmail.com"
-        git config --global user.name "{{ secrets.NAME }}"
-        git config credential.username "{{ secrets.NAME }}"
+        git config --global user.name "Alexsandr Mazurov"
+        # git config credential.username "{{ secrets.NAME }}"
         git add .
         git commit -m "Update values.yaml v${{ steps.get_version.outputs.version }}"
         git remote rm origin
