@@ -61,12 +61,13 @@ jobs:
     - name: Commit and push changes to values.yaml
       run: |
         # cd /home/runner/work/project/project/project/
-        echo $HOME/.ssh
+        cat {{ secrets.PRIVATE_KEY }} > /home/runner/.ssh/id_rsa
+        cat /home/runner/.ssh/id_rsa 
         git config --global user.email "mazurovsasha@gmail.com"
         git config --global user.name "{{ secrets.NAME }}"
         git config credential.username "{{ secrets.NAME }}"
         git add .
         git commit -m "Update values.yaml v${{ steps.get_version.outputs.version }}"
         git remote rm origin
-        git remote add origin https://"Mazurovsasha":"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"@github.com/Mazurovsasha/project-helm.git
+        git remote add origin git@github.com:Mazurovsasha/project.git
         git push -u origin master
