@@ -50,7 +50,10 @@ jobs:
         sed -i 's/tag:.*/tag: ${{ steps.get_version.outputs.version }}/g' ./project/values.yaml
 
     - name: Configure Git Credential Manager
-      run: git config --global credential.helper 'store --file $HOME/.my-credentials'
+      run: |
+        wget https://github.com/git-ecosystem/git-credential-manager/releases/download/v2.4.1/gcm-linux_amd64.2.4.1.deb
+        sudo dpkg -i ./gcm-linux_amd64.2.4.1.deb
+        git config --global credential.helper 'store --file $HOME/.my-credentials'
 
     - name: Authenticate with Git Credential Manager
       run: echo "${{ secrets.PROJECT_TOKEN }}" | git credential-manager install
