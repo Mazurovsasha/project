@@ -76,5 +76,5 @@ jobs:
         git add .
         git commit -m "Update values.yaml v${{ steps.get_version.outputs.version }}"
         git remote rm origin
-        git remote add origin git@github.com:Mazurovsasha/project.git
+        git remote add origin git@github.com:Mazurovsasha/project-helm.git
         git push -u origin master
