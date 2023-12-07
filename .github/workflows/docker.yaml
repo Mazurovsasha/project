@@ -68,3 +68,16 @@ jobs:
         git remote rm origin
         git remote add origin git@github.com:Mazurovsasha/project-helm.git
         git push -u origin master
+
+    - name: Slack Notification
+      uses: rtCamp/action-slack-notify@v2
+      env:
+        SLACK_CHANNEL: 'project_slack'
+        SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#FF00FF'
+        SLACK_ICON: https://github.com/rtCamp.png?size=48
+        SLACK_MESSAGE: 'New Docker image tag: ${{ steps.get_version.outputs.version }} :rocket:'
+        SLACK_TITLE: Post Title
+        SLACK_USERNAME: rtCamp
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+      with:
+       status: ${{ job.status }}
