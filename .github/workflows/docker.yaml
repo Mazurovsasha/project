@@ -51,9 +51,11 @@ jobs:
 
     - name: Set up SSH keys
       run: |
+        sudo apt-get install -y openssh-client
         mkdir -p ~/.ssh/
-        echo "$PRIVATE_KEY" > ~/.ssh/id_rsa
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan github.com >> ~/.ssh/known_hosts
 
     # - name: Configure Git Credential Manager
     #   run: |
