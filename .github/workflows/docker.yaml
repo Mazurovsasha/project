@@ -49,20 +49,24 @@ jobs:
       run: |
         sed -i 's/tag:.*/tag: ${{ steps.get_version.outputs.version }}/g' ./project/values.yaml
 
+    - name: Set up SSH keys
+      run: |
+        mkdir -p ~/.ssh/
+        echo "$PRIVATE_KEY" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+
     # - name: Configure Git Credential Manager
     #   run: |
     #     wget https://github.com/git-ecosystem/git-credential-manager/releases/download/v2.4.1/gcm-linux_amd64.2.4.1.deb
     #     sudo dpkg -i ./gcm-linux_amd64.2.4.1.deb
     #     git config --global credential.helper 'store --file $HOME/.my-credentials'
+                  # cd /home/runner/work/project/project/project/
 
     # - name: Authenticate with Git Credential Manager
     #   run: echo "${{ secrets.PROJECT_TOKEN }}" | git credential-manager install
 
     - name: Commit and push changes to values.yaml
       run: |
-        # cd /home/runner/work/project/project/project/
-        cat {{ secrets.PRIVATE_KEY }} > /home/runner/.ssh/id_rsa
-        cat /home/runner/.ssh/id_rsa 
         git config --global user.email "mazurovsasha@gmail.com"
         git config --global user.name "{{ secrets.NAME }}"
         git config credential.username "{{ secrets.NAME }}"
