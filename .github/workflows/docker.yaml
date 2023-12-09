@@ -49,6 +49,19 @@ jobs:
       run: |
         sed -i 's/taggg:.*/taggg: "${{ steps.get_version.outputs.version }}"/g' ./project/values.yaml
 
+    - name: Execute helm lint
+      run: |
+        helm lint ./project
+        if [ $? -eq 0 ]; then
+          echo "Helm lint passed successfully"
+          SLACK_COLOR="good"
+            SLACK_MESSAGE="Helm lint passed successfully :white_check_mark:"
+        else
+          echo "Helm lint failed"
+          SLACK_COLOR="danger"
+          SLACK_MESSAGE="Helm lint failed :x:"
+        fi
+
     - name: Set up SSH keys
       run: |
         sudo apt-get install -y openssh-client
