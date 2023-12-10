@@ -1,7 +1,6 @@
 name: Docker Build and Publish
 
 on:
-  # workflow_dispatch:
   push:
     branches:
       - master
@@ -9,9 +8,6 @@ on:
 jobs:
   build_and_publish:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      packages: write
 
     steps:
     - name: Checkout source code
