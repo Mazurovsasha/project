@@ -5,7 +5,7 @@ FROM node:latest
 WORKDIR /app
 
 # from hw 18
-RUN adduser -D sasha
+RUN groupadd -r sasha && useradd -r -g sasha sasha
 
 COPY package.json package-lock.json ./
 
