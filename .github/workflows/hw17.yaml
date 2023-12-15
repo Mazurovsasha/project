@@ -1,0 +1,23 @@
+name: Docker test
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build_and_publish:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout source code
+      uses: actions/checkout@v3
+
+    - name: Build and deploy Docker image
+      run: |
+        docker build -t test-image .
+        docker run -d --name test-container test-image
+              
+    - name: Check for root access inside the container
+      run: |
+        docker exec test-container id 
