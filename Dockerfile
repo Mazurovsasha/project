@@ -4,6 +4,9 @@ FROM node:latest
 
 WORKDIR /app
 
+# from hw 18
+RUN adduser -D sasha
+
 COPY package.json package-lock.json ./
 
 RUN npm install
@@ -11,6 +14,9 @@ RUN npm install
 COPY ./src .
 
 EXPOSE 3000
+
+# fron hw 18
+USER sasha    
 
 # ENV DOCKERIZE_VERSION v0.7.0
 
