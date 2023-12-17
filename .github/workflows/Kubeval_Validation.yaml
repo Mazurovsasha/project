@@ -10,6 +10,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Install kubeval
+      run: |
+        curl -LO https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz
+        tar xf kubeval-linux-amd64.tar.gz
+        sudo cp kubeval /usr/local/bin
+
     - name: Checkout values.yaml
       uses: actions/checkout@v2
       with:
