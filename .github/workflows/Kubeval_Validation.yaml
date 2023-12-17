@@ -25,7 +25,8 @@ jobs:
     - name: Kubeval Validation
       id: kubeval
       run: |
-        output="$(echo "Run kubeval --strict -d ./project/templates --force-color --ignore-missing-schemas >> 1.txt || true")"
+        echo "Run kubeval --strict -d ./project/templates --force-color --ignore-missing-schemas" >> 1.txt || true
+        output="$(cat 1.txt)"
         echo "::set-output name=output::$output"
 
     - name: Slack Notification Kubeval Validation
