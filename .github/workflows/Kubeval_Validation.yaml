@@ -22,7 +22,7 @@ jobs:
       with:
         command: |
           echo "Run kubeval"
-          kubeval -d project --force-color --strict --ignore-missing-schemas
+          kubeval -d ./project/templates --force-color --strict --ignore-missing-schemas
 
     - name: Slack Notification Kubeval Validation
       uses: rtCamp/action-slack-notify@v2
