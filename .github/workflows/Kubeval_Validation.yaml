@@ -21,9 +21,9 @@ jobs:
       uses: codewdhruv/kubeval-validation@v1.1.1
       with:
         files: |
-          ./project/**/*.yaml
-        exclude:
-          './project/*.yaml'
+          ./project/templates/*.yaml
+        # exclude:
+        #   './project/*.yaml'
 
     - name: Slack Notification Kubeval Validation
       uses: rtCamp/action-slack-notify@v2
