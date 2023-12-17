@@ -1,7 +1,6 @@
 name: Kubeval Validation
 
 on:
-  # workflow_dispatch:
   push:
     branches:
       - master
@@ -18,13 +17,11 @@ jobs:
         path: .
     
     - name: Kubeval Validation
-      uses: stefanprodan/kube-tools@v1.2.0
-      with:
-        command: |
-          echo "Run kubeval"
-          kubeval -d ./project/templates --force-color --strict --ignore-missing-schemas
-      env:
-        SLACK_MESSAGE: ${{ steps.kubeval.outputs.stdout }}
+      id: kubeval
+      run: |
+        echo "Run kubeval"
+        output="$(kubeval -d ./project/templates --force-color --strict --ignore-missing-schemas)"
+        echo "::set-output name=output::$output"
 
     - name: Slack Notification Kubeval Validation
       uses: rtCamp/action-slack-notify@v2
@@ -32,7 +29,9 @@ jobs:
         SLACK_CHANNEL: 'project_slack'
         SLACK_COLOR: ${{ job.status }}
         SLACK_ICON: https://github.com/rtCamp.png?size=48
-        SLACK_MESSAGE: 'Результат Kubeval Validation: ${{ env.SLACK_MESSAGE }}'
+        SLACK_MESSAGE: |
+          Результат Kubeval Validation:
+          ${{ steps.kubeval.outputs.output }}
         SLACK_TITLE: Kubeval Validation
         SLACK_USERNAME: rtCamp
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
