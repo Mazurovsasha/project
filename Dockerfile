@@ -4,9 +4,6 @@ FROM node:latest
 
 WORKDIR /app
 
-# from hw 18
-RUN groupadd -r sasha && useradd -r -g sasha sasha
-
 COPY package.json package-lock.json ./
 
 RUN npm install
@@ -14,10 +11,7 @@ RUN npm install
 COPY ./src .
 
 EXPOSE 3000
-
-# fron hw 18
-USER sasha    
-
+  
 # ENV DOCKERIZE_VERSION v0.7.0
 
 # RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \

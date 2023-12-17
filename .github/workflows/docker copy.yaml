@@ -1,0 +1,36 @@
+name: Kubeval Validation
+
+on:
+  # workflow_dispatch:
+  push:
+    branches:
+      - master
+
+jobs:
+  build_and_publish:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout values.yaml
+      uses: actions/checkout@v2
+      with:
+        repository: Mazurovsasha/project-helm
+        path: .
+    
+    - name: Kubeval Validation
+      uses: codewdhruv/kubeval-validation@v1.1.1
+      with:
+        directory: ./project
+
+    - name: Slack Notification Kubeval Validation
+      uses: rtCamp/action-slack-notify@v2
+      env:
+        SLACK_CHANNEL: 'project_slack'
+        SLACK_COLOR: ${{ job.status }}
+        SLACK_ICON: https://github.com/rtCamp.png?size=48
+        SLACK_MESSAGE: 'Результат Kubeval Validation: ${{ job.status }}'
+        SLACK_TITLE: Kubeval Validation
+        SLACK_USERNAME: rtCamp
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+      with:
+        status: ${{ job.status }}
