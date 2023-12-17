@@ -29,6 +29,7 @@ jobs:
         kubeval --strict -d ./project/templates --force-color --ignore-missing-schemas > 1.txt
         output="$(cat 1.txt)"
         echo "::set-output name=output::$output"
+        echo "$output"
 
     - name: Slack Notification Kubeval Validation
       uses: rtCamp/action-slack-notify@v2
