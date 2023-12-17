@@ -25,8 +25,7 @@ jobs:
     - name: Kubeval Validation
       id: kubeval
       run: |
-        echo "Run kubeval"
-        kubeval --strict -d ./project/templates --force-color --ignore-missing-schemas >> 1.txt || true
+        echo "Run kubeval --strict -d ./project/templates --force-color --ignore-missing-schemas >> 1.txt || true"
         output="$(cat 1.txt)"
         echo "::set-output name=output::$output"
         echo "$output"
