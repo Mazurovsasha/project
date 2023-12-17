@@ -23,8 +23,7 @@ jobs:
         files: |
           ./project/**/*.yaml
         exclude:
-         - '\./project/Chart.yaml'
-         - '\./project/values.yaml'
+          '\./project/*.yaml'
 
     - name: Slack Notification Kubeval Validation
       uses: rtCamp/action-slack-notify@v2
