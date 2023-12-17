@@ -26,6 +26,7 @@ jobs:
       id: kubeval
       run: |
         echo "Run kubeval"
+        kubeval --strict
         output="$(kubeval -d ./project/templates --force-color --strict --ignore-missing-schemas)"
         echo "::set-output name=output::$output"
 
