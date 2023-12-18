@@ -43,7 +43,7 @@ jobs:
         SLACK_MESSAGE: |
           Результат Kubeval Validation:
           ${{ steps.kubeval.outputs.output }}
-          [Ссылка на отчет о валидации](https://github.com/${{ env.GITHUB_REPOSITORY }}/actions/runs/${{ env.GITHUB_RUN_ID }})
+          [Ссылка на отчет о валидации](https://github.com/${{ env.GITHUB_REPOSITORY }}/actions/runs/${{ env.github.run_id }})
         SLACK_TITLE: Kubeval Validation
         SLACK_USERNAME: rtCamp
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
