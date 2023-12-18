@@ -25,7 +25,10 @@ jobs:
     - name: Kubeval Validation
       id: kubeval
       run: |
-        output="$(kubeval --strict -d ./project/templates)" || true
+        pwd
+        kubeval --strict -d ./project/templates >> 1.txt || true
+        cat 1.txt
+        output="$(cat 1.txt)"
         echo "::set-output name=output::$output"
 
     - name: Slack Notification Kubeval Validation
