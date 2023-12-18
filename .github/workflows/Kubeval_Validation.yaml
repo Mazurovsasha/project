@@ -31,7 +31,7 @@ jobs:
 
     - name: Echo
       run: |
-        echo ${{ steps.kubeval.outputs.output }}
+        echo '${{ steps.kubeval.outputs.output }}'
 
     - name: Upload validation report
       uses: actions/upload-artifact@v2
