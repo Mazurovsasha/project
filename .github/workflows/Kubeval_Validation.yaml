@@ -26,7 +26,7 @@ jobs:
       id: kubeval
       run: |
         kubeval --strict -d ./project/templates >> report.txt || true
-        output=$(cat report.txt)
+        output="$(cat report.txt)"
         echo "::set-output name=output::$output"
 
     - name: Echo
