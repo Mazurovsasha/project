@@ -26,7 +26,7 @@ jobs:
       id: kubeval
       run: |
         kubeval --strict -d ./project/templates >> report.txt || true
-        output="$(ehco report.txt)"
+        output="$(echo report.txt)"
         echo "::set-output name=output::$output"
 
     - name: Upload validation report
