@@ -35,7 +35,7 @@ jobs:
 
     - name: Upload validation report
       id: artifact-upload-step
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: validation-report
         path: report.txt
