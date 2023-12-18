@@ -34,10 +34,14 @@ jobs:
         echo '${{ steps.kubeval.outputs.output }}'
 
     - name: Upload validation report
+      id: artifact-upload-step
       uses: actions/upload-artifact@v2
       with:
         name: validation-report
         path: report.txt
+
+    - name: Output artifact URL
+      run:  echo 'Artifact URL is ${{ steps.artifact-upload-step.outputs.artifact-url }}'
 
     # - name: Download validation report artifact
     #   uses: actions/download-artifact@v2
