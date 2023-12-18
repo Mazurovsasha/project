@@ -23,7 +23,7 @@ jobs:
         path: .
     
     - name: Kubeval Validation
-      # id: kubeval
+      id: kubeval
       run: |
         kubeval --strict -d ./project/templates >> report.txt || true
         output=$(cat report.txt)
