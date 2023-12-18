@@ -23,11 +23,15 @@ jobs:
         path: .
     
     - name: Kubeval Validation
-      id: kubeval
+      # id: kubeval
       run: |
         kubeval --strict -d ./project/templates >> report.txt || true
         output=$(cat report.txt)
         echo "::set-output name=output::$output"
+
+    - name: Echo
+      run: |
+        echo ${{ steps.kubeval.outputs.output }}
 
     - name: Upload validation report
       uses: actions/upload-artifact@v2
