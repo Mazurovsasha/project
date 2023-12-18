@@ -29,11 +29,11 @@ jobs:
         output=$(cat report.txt)
         echo "::set-output name=output::$output"
 
-    # - name: Upload validation report
-    #   uses: actions/upload-artifact@v2
-    #   with:
-    #     name: validation-report
-    #     path: report.txt
+    - name: Upload validation report
+      uses: actions/upload-artifact@v2
+      with:
+        name: validation-report
+        path: report.txt
 
     # - name: Download validation report artifact
     #   uses: actions/download-artifact@v2
