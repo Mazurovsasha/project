@@ -35,6 +35,7 @@ jobs:
         path: report.txt
 
     - name: Slack Notification Kubeval Validation
+      needs: Upload validation report
       uses: rtCamp/action-slack-notify@v2
       env:
         SLACK_CHANNEL: 'project_slack'
@@ -43,7 +44,7 @@ jobs:
         SLACK_MESSAGE: |
           Результат Kubeval Validation:
           ${{ steps.kubeval.outputs.output }}
-          [Ссылка на отчет о валидации](https://github.com/${{ github.repository }}/actions/artifacts/${{ github.run_id }}/${{ env.ARTIFACT_ID }})
+          [Ссылка на отчет о валидации](https://github.com/${{ github.repository }}/actions/artifacts/${{ github.run_id }}/validation-report)
         SLACK_TITLE: Kubeval Validation
         SLACK_USERNAME: rtCamp
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
