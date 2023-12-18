@@ -29,17 +29,17 @@ jobs:
         output="$(cat report.txt)"
         echo "::set-output name=output::$output"
 
-    - name: Upload validation report
-      uses: actions/upload-artifact@v2
-      with:
-        name: validation-report
-        path: report.txt
+    # - name: Upload validation report
+    #   uses: actions/upload-artifact@v2
+    #   with:
+    #     name: validation-report
+    #     path: report.txt
 
-    - name: Download validation report artifact
-      uses: actions/download-artifact@v2
-      with:
-        name: validation-report
-        path: downloaded-artifacts
+    # - name: Download validation report artifact
+    #   uses: actions/download-artifact@v2
+    #   with:
+    #     name: validation-report
+    #     path: downloaded-artifacts
 
     - name: Slack Notification Kubeval Validation
       uses: rtCamp/action-slack-notify@v2
@@ -50,7 +50,7 @@ jobs:
         SLACK_MESSAGE: |
           Результат Kubeval Validation:
           ${{ steps.kubeval.outputs.output }}
-          [Ссылка на отчет о валидации](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts/validation-report)
+          Подробнее смотрите в артифакте
         SLACK_TITLE: Kubeval Validation
         SLACK_USERNAME: rtCamp
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
